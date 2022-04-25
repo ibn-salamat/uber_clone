@@ -1,14 +1,15 @@
 import React from 'react';
 import {
-  SafeAreaView,
+// SafeAreaView,
 } from 'react-native';
+import {Provider} from 'react-redux';
+import {store} from '@/store';
 
 const App = () => {
   return (
-    <SafeAreaView>
-    </SafeAreaView>
+    <Provider store={store}>
+    </Provider>
   );
 };
-
 
 export default App;
