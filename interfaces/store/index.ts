@@ -1,5 +1,1 @@
-export interface TypeStore {
-    origin: null
-    destination: null
-    travelTimeInfo: null
-}
+export type {TypeNavSliceState} from './slices/nav';
