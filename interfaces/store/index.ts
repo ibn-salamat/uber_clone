@@ -1,1 +1,1 @@
-export type {TypeNavSliceState} from './slices/nav';
+export * from './slices/nav';
