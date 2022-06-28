@@ -1,13 +1,12 @@
 import React from 'react';
-import {
-// SafeAreaView,
-} from 'react-native';
+import {View} from 'react-native';
 import {Provider} from 'react-redux';
-import {store} from '@/store';
+import {store} from './store';
 
 const App = () => {
   return (
     <Provider store={store}>
+      <View>sdf</View>
     </Provider>
   );
 };

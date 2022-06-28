@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {TypeNavSliceState} from '@/interfaces/store';
+import {TypeNavSliceState} from '../../interfaces/store';
 
 const initialState: TypeNavSliceState = {
   origin: null,
@@ -23,4 +23,5 @@ export const navSlice = createSlice({
   },
 });
 
-export const {setDestination, setOrigin, setTravelTimeInfo} = navSlice.actions;
+export const {setDestination, setOrigin, setTravelTimeInfo} =
+  navSlice.actions;
