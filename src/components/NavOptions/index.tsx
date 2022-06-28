@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import React, {FC} from 'react';
 import {FlatList, Image, Text, TouchableOpacity, View} from 'react-native';
 import tw from 'tailwind-react-native-classnames';
@@ -18,6 +19,8 @@ const data = [
 ];
 
 const NavOptions: FC<{}> = () => {
+  const navigation = useNavigation();
+
   return <View>
     <FlatList
       data={data}
@@ -26,6 +29,10 @@ const NavOptions: FC<{}> = () => {
       renderItem={({item}) => {
         return <TouchableOpacity
           style={tw`p-2 bg-gray-200 m-2 w-40`}
+          onPress={() => {
+            // @ts-ignore
+            navigation.navigate(item.screen);
+          }}
         >
           <View>
             <Image
@@ -41,6 +48,7 @@ const NavOptions: FC<{}> = () => {
             <Text
               style={tw`text-lg font-semibold mt-2`}
             >{item.title}</Text>
+            {/*  */}
           </View>
         </TouchableOpacity>;
       }}
