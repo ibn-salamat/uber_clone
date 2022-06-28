@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-import {TypeNavSliceState} from '../../interfaces/store';
+import {TypeNavSliceState} from 'src/interfaces/store';
 
 const initialState: TypeNavSliceState = {
   origin: null,
