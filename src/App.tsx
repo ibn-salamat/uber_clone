@@ -4,9 +4,10 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {Provider} from 'react-redux';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import HomeScreen from './screens/home';
-import MapScreen from './screens/map';
+import {HomeScreen, MapScreen} from './screens';
 import {store} from './store';
+
+// AIzaSyDfMcOTjmBjTYw5BOq8p9yMLFI6kLN7m8s google map key
 
 const App = () => {
   const Stack = createNativeStackNavigator();
