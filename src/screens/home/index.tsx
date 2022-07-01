@@ -5,6 +5,7 @@ import {
   GooglePlacesAutocomplete,
 } from 'react-native-google-places-autocomplete';
 import {useDispatch} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
 
 import {GOOGLE_MAPS_API_KEY} from '@env';
 import {NavOptions} from '../../components';
@@ -13,6 +14,7 @@ import {setDestination, setOrigin} from '../../store/slices/nav';
 
 const HomeScreen: FC<{}> = () => {
   const dispatch = useDispatch();
+  const navigation = useNavigation();
 
   return <SafeAreaView style={tw`bg-white h-full`}>
     <View style={tw`p-5`}>
@@ -44,12 +46,15 @@ const HomeScreen: FC<{}> = () => {
         }}
         onPress={(data, details) => {
           if (!details) return;
+
           dispatch(setOrigin({
             location: details?.geometry.location,
             description: data.description,
           }));
 
           dispatch(setDestination(null));
+          // @ts-ignore
+          navigation.navigate('MapScreen');
         }}
         fetchDetails
         listEmptyComponent={() => <Text>NotFound</Text>}
