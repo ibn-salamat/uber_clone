@@ -4,14 +4,16 @@ import tw from 'tailwind-react-native-classnames';
 import {
   GooglePlacesAutocomplete,
 } from 'react-native-google-places-autocomplete';
+import {useDispatch} from 'react-redux';
 
 import {GOOGLE_MAPS_API_KEY} from '@env';
 import {NavOptions} from '../../components';
-import {useRef} from 'react';
 import {Text} from '@rneui/base';
+import {setDestination, setOrigin} from '../../store/slices/nav';
 
 const HomeScreen: FC<{}> = () => {
-  const ref = useRef();
+  const dispatch = useDispatch();
+
   return <SafeAreaView style={tw`bg-white h-full`}>
     <View style={tw`p-5`}>
       <Image
@@ -31,7 +33,6 @@ const HomeScreen: FC<{}> = () => {
         placeholder='Where from?'
         query={{
           key: GOOGLE_MAPS_API_KEY,
-          language: 'en',
         }}
         styles={{
           container: {
@@ -41,14 +42,19 @@ const HomeScreen: FC<{}> = () => {
             fontSize: 18,
           },
         }}
-        enablePoweredByContainer
         onPress={(data, details) => {
+          if (!details) return;
+          dispatch(setOrigin({
+            location: details?.geometry.location,
+            description: data.description,
+          }));
 
+          dispatch(setDestination(null));
         }}
-        listEmptyComponent={<Text>NotFound</Text>}
-        renderRow={(data) => {
-          return <Text>{data.description}</Text>;
-        }}
+        fetchDetails
+        listEmptyComponent={() => <Text>NotFound</Text>}
+        minLength={2}
+        enablePoweredByContainer={false}
       />
 
       <NavOptions />
