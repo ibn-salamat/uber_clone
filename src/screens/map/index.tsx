@@ -1,14 +1,17 @@
-import {Text} from '@rneui/base';
 import React, {FC} from 'react';
-import {SafeAreaView, View} from 'react-native';
+import {View} from 'react-native';
 import tw from 'tailwind-react-native-classnames';
 
+import {Map} from '../../components';
+
 const MapScreen: FC<{}> = () => {
-  return <SafeAreaView style={tw`bg-white h-full`}>
-    <View style={tw`p-5`}>
-      <Text>Map Screen</Text>
+  return <View>
+    <View style={tw`h-1/2`}>
+      <Map />
     </View>
-  </SafeAreaView>;
+
+    <View style={tw`h-1/2`}></View>
+  </View>;
 };
 
 
