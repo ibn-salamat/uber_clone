@@ -12,15 +12,13 @@ const Map: FC<{}> = () => {
   useEffect(() => {
     if (navState.origin) {
       setRegion({
-        latitude: navState.origin.lat,
-        longitude: navState.origin.lng,
+        latitude: navState.origin.location.lat,
+        longitude: navState.origin.location.lng,
         latitudeDelta: 0.05,
         longitudeDelta: 0.05,
       });
     }
   }, [navState.origin]);
-
-  console.log(navState.origin);
 
   return <View>
     <MapView
@@ -28,7 +26,7 @@ const Map: FC<{}> = () => {
         height: '100%',
       }}
       mapType="mutedStandard"
-      region={region}
+      initialRegion={region}
     >
       {region &&
       <Marker

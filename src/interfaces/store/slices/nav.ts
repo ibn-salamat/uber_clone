@@ -5,6 +5,7 @@ export type TypeNavSliceState = {
   travelTimeInfo: null | string;
 };
 
-export interface TypeOrigin extends Pick<Point, 'lat' | 'lng'> {
+export interface TypeOrigin {
+  location: Pick<Point, 'lat' | 'lng'>;
   description?: string;
 }
