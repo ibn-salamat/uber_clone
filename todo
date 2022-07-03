@@ -1,1 +1,3 @@
 add types = navigation.navigate [available routes]
+
+react-native-maps-directions
